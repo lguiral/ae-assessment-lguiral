@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: stg_events_flat_partitioned_clustered
+    description: "A flat events table containing all raw data from the events source partitioned by event_date and clustered by event_type, user_id and product_id."
+    columns:
+      - name: event_id
+        description: "Unique identifier for the event."
+        tests:
+          - not_null
+          - unique
+      - name: user_id
+        description: "Unique identifier for the user."
+        tests:
+          - not_null
+      - name: event_type
+        description: "Type of the event (e.g., page_view, placed_order, etc.)."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['search', 'page_view', 'placed_order', 'sign_up_success', 'add_product_to_cart', 'visit_related_product', 'remove_product_from_cart', 'visit_personal_recommendation', 'visit_recently_visited_product']
+      - name: event_timestamp
+        description: "Timestamp when the event occurred."
+        tests:
+          - not_null
+      - name: event_date
+        description: "Date extracted from the event timestamp for partitioning."
+        tests:
+          - not_null
+      - name: product_id
+        description: "ID of the product involved in the event (if applicable)."
+        tests:
+          - relationships:
+              to: ref('products')
+              field: product_id
+  - name: stg_events_flat
+    description: "A flat events table containing all raw data from the events source. Same columns as the partitioned and clustered model."
