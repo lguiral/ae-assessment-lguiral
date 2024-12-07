@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: ae_assessment_lguiral
+    schema: ae_assessment_lguiral
+    tables:
+      - name: events_flat
