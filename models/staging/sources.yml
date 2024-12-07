@@ -5,3 +5,4 @@ sources:
     schema: ae_assessment_lguiral
     tables:
       - name: events_flat
+      - name: events_flat_partitioned_clustered

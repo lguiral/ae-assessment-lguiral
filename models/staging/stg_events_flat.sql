@@ -13,3 +13,4 @@ SELECT
     LOWER(referrer) AS referrer
 FROM {{ source('ae_assessment_lguiral', 'events_flat') }}
 WHERE event_id IS NOT NULL
+AND customer_id IS NOT NULL
