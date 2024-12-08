@@ -32,3 +32,6 @@ models:
       +materialized: table
     mart:
       schema: mart
+
+vars:
+  event_type_accepted_values_list : ['search', 'page_view', 'placed_order', 'sign_up_success', 'add_product_to_cart', 'visit_related_product', 'remove_product_from_cart', 'visit_personal_recommendation', 'visit_recently_visited_product']

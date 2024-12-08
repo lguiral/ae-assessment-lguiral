@@ -6,7 +6,7 @@ SELECT
     ip_address,
     CAST(customer_id AS INT64) AS user_id,
     CAST(date_timestamp AS TIMESTAMP) AS event_timestamp,
-    EXTRACT(DATE FROM CAST(date_timestamp AS TIMESTAMP)) AS event_date,
+    CAST(EXTRACT(DATE FROM CAST(date_timestamp AS TIMESTAMP)) AS DATE) AS event_date,
     LOWER(query) AS query,
     LOWER(page) AS page_source,
     CAST(product AS INT64) AS product_id,
