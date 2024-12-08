@@ -1,6 +1,6 @@
 SELECT
-    event_date,
-    event_timestamp,
+    CAST(event_date AS DATE) AS event_date,
+    CAST(event_timestamp AS TIMESTAMP) AS event_timestamp,
     event_id,
     user_id,
     event_type,
