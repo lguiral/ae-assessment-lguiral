@@ -4,8 +4,8 @@
 This repository showcases an end-to-end analytics engineering project using dbt, BigQuery, and a well-structured SQL-based transformation pipeline. The goal is to provide insightful metrics on user sessions, customer journeys, and product performance for a fictional e-commerce platform.
 
 ## Data Flow
-1. **Staging Layer (stg_events_flat)**:  
-   Raw event-level data sourced from the database is cleaned, standardized, and flattened into a single table.
+1. **Staging Layer (stg_...)**:  
+   - **stg_events_flat_partitioned_clustered**: Raw event-level data sourced from the database is cleaned, standardized, and flattened into a single table.
 
 2. **Intermediate Models (int_...)**:  
    - **int_sessions**: Aggregates events into user sessions, computing session-level metrics like session duration, product views, adds-to-cart, and purchases.
