@@ -12,7 +12,7 @@ This repository showcases an end-to-end analytics engineering project using dbt,
    - **int_aggregated_events**: Enriches event-level data with session context, making it easy to analyze events in their session context.
    - **int_customer_journey_data**: Prepares data for median calculations by creating sorted arrays of sessions before a user's first purchase, simplifying downstream computations.
 
-3. **Mart Models (mart_...)**:  
+3. **Mart Models (mrt_...)**:  
    These are the final, analysis-ready tables tailored for stakeholder questions:
    - **mart_user_behavior_metrics**: Provides user behavior analytics such as daily sessions, unique users, average session duration by referrer, and conversion funnel metrics.
    - **mart_customer_journey_metrics**: Answers questions about how many sessions and how much time it takes before users make their first purchase, by cohort.
