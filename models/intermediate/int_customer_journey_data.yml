@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: int_customer_journey_data
+    description: "Intermediate model that aggregates sessions before a user's first purchase, producing sorted arrays for subsequent median calculations in mart models."
+    columns:
+      - name: user_cohort_date
+        description: "The date corresponding to the user's first session. Used as a cohort dimension."
+        tests:
+          - not_null
+
+      - name: sessions_array
+        description: "Array of session_number values, sorted by first_purchase_session for each cohort."
+        tests:
+          - not_null
+
+      - name: durations_array
+        description: "Array of session_duration values, sorted by session_duration for each cohort."
+        tests:
+          - not_null
+
+      - name: total_count
+        description: "Total number of sessions before the first purchase for users in the given cohort."
+        tests:
+          - not_null

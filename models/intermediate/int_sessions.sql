@@ -1,6 +1,7 @@
 WITH events AS (
     SELECT
         user_id,
+        event_id,
         event_timestamp,
         event_type,
         product_id,
@@ -34,7 +35,8 @@ assigned_sessions AS (
 SELECT
     user_id,
     session_number,
-    CONCAT(CAST(user_id AS STRING), "_", CAST(session_number AS STRING)) AS session_id,
+    --- GENERATE_UUID() AS session_id,
+    CONCAT(CAST(user_id AS STRING), "-", CAST(session_number AS STRING)) AS session_id,
     MIN(event_timestamp) AS session_start,
     MAX(event_timestamp) AS session_end,
     TIMESTAMP_DIFF(MAX(event_timestamp), MIN(event_timestamp), SECOND) AS session_duration,

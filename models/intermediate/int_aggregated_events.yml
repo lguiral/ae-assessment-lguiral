@@ -1,0 +1,75 @@
+version: 2
+
+models:
+  - name: int_aggregated_events
+    description: "Enriched event-level dataset, combining raw events with session context for comprehensive event analysis."
+    columns:
+      - name: event_id
+        description: "Unique identifier for the event."
+        tests:
+          - not_null
+          - unique
+
+      - name: user_id
+        description: "Unique identifier for the user performing the event."
+        tests:
+          - not_null
+
+      - name: event_timestamp
+        description: "Timestamp when the event occurred."
+        tests:
+          - not_null
+
+      - name: event_type
+        description: "Type of event (e.g., page_view, placed_order, search, etc.)."
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - search
+                - page_view
+                - placed_order
+                - sign_up_success
+                - add_product_to_cart
+                - visit_related_product
+                - remove_product_from_cart
+                - visit_personal_recommendation
+                - visit_recently_visited_product
+
+      - name: product_id
+        description: "Identifier for the product involved in the event (if applicable)."
+
+      - name: referrer
+        description: "Referrer of the event, indicating how the user arrived at the site."
+
+      - name: page_source
+        description: "Page source or URL of the visited page (if applicable)."
+
+      - name: query
+        description: "Search query text if the event_type is search-related."
+
+      - name: session_id
+        description: "Unique identifier linking this event to a specific session."
+        tests:
+          - not_null
+
+      - name: session_start
+        description: "Timestamp marking the start of the session this event belongs to."
+        tests:
+          - not_null
+
+      - name: session_end
+        description: "Timestamp marking the end of the session this event belongs to."
+        tests:
+          - not_null
+
+      - name: session_duration
+        description: "Duration of the session in seconds."
+        tests:
+          - not_null
+
+      - name: event_hour_of_day
+        description: "Numeric hour of the day (0-23) extracted from event_timestamp to analyze time-based patterns."
+
+      - name: event_day_of_week
+        description: "Numeric day of the week (1-7) extracted from event_timestamp, allowing analysis of weekday/weekend trends."
