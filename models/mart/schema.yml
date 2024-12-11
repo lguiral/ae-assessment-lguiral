@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: mrt_user_behavior_metrics
+    description: "Mart model providing user behavior metrics such as average session duration by referrer, total sessions over time, and conversion rates."
+    columns:
+      - name: date
+        description: "Date of the sessions aggregated."
+      - name: total_sessions
+        description: "Total number of sessions on a given date."
+      - name: unique_users
+        description: "Number of unique users active on a given date."
+      - name: referrer
+        description: "Referrer source of user sessions."
+      - name: avg_session_duration
+        description: "Average duration of sessions for the given referrer."
+      - name: add_to_cart_rate
+        description: "Ratio of sessions that added at least one product to the cart."
+      - name: purchase_rate
+        description: "Conversion rate from add-to-cart sessions to purchase sessions."
+
+  - name: mrt_customer_journey_metrics
+    description: "Mart model computing median sessions before purchase and median session duration before purchase by user cohort."
+    columns:
+      - name: user_cohort_date
+        description: "Cohort date based on user's first session."
+      - name: median_sessions_before_purchase
+        description: "Median number of sessions a user takes before their first purchase."
+      - name: median_session_duration_before_purchase
+        description: "Median session duration in seconds before the user's first purchase."
+
+  - name: mrt_product_insights
+    description: "Mart model for product-level metrics, including most-viewed and most-purchased products, and view-to-purchase conversion rates."
+    columns:
+      - name: product_id
+        description: "Unique identifier for the product."
+      - name: total_views
+        description: "Total page views for this product."
+      - name: total_purchases
+        description: "Total number of purchases for this product."
+      - name: view_to_purchase_rate
+        description: "Ratio of purchases to views, indicating product conversion effectiveness."

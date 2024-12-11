@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: int_sessions
+    description: "Session-level aggregation model. Defines user sessions and key session-level metrics."
+    columns:
+      - name: user_id
+        description: "Unique identifier for the user."
+        tests:
+          - not_null
+
+      - name: session_id
+        description: "Unique identifier for the session, formed by concatenating user_id and session_number."
+        tests:
+          - not_null
+          - unique
+
+      - name: session_number
+        description: "Incremental number for each session per user."
+        tests:
+          - not_null
+
+      - name: session_start
+        description: "Timestamp marking the start of the session."
+        tests:
+          - not_null
+
+      - name: session_end
+        description: "Timestamp marking the end of the session."
+        tests:
+          - not_null
+
+      - name: session_duration
+        description: "Duration of the session in seconds."
+        tests:
+          - not_null
+
+      - name: event_count
+        description: "Total number of events recorded in the session."
+
+      - name: unique_products_viewed
+        description: "Count of distinct products viewed during the session."
+
+      - name: page_view_count
+        description: "Number of page_view events in the session."
+
+      - name: add_to_cart_count
+        description: "Number of add_product_to_cart events in the session."
+
+      - name: purchase_count
+        description: "Number of placed_order events in the session."
+
+      - name: search_count
+        description: "Number of search events in the session."
+
+      - name: referrer
+        description: "Referrer of the first event in the session."
